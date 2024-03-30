@@ -12,6 +12,9 @@ namespace Pract12
 {
     public partial class SavingDialogForm : Form
     {
+        static string name="";
+        static string surname = "";
+
         public SavingDialogForm()
         {
             InitializeComponent();
@@ -25,6 +28,13 @@ namespace Pract12
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.ShowDialog();
+            
         }
     }
 }
