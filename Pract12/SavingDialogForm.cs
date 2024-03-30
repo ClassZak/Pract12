@@ -10,24 +10,21 @@ using System.Windows.Forms;
 
 namespace Pract12
 {
-    public partial class Form1 : Form
+    public partial class SavingDialogForm : Form
     {
-        string[] text;
-
-        public Form1()
+        public SavingDialogForm()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void SavingDialogForm_Load(object sender, EventArgs e)
         {
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SavingDialogForm savingDialogForm = new SavingDialogForm();
-            savingDialogForm.ShowDialog();
+            this.Close();
         }
     }
 }
