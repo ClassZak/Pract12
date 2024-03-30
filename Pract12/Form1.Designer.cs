@@ -70,6 +70,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Асинхронный ввод-вывод";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

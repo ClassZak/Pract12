@@ -114,6 +114,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SavingDialogForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Сохранение";
             this.Load += new System.EventHandler(this.SavingDialogForm_Load);
             this.ResumeLayout(false);
