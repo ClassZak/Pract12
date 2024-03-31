@@ -32,8 +32,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.SurnameTextBoxd = new System.Windows.Forms.TextBox();
+            this.NameTextBoxd = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -66,19 +66,19 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Имя:";
             // 
-            // textBox1
+            // SurnameTextBoxd
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(321, 20);
-            this.textBox1.TabIndex = 3;
+            this.SurnameTextBoxd.Location = new System.Drawing.Point(15, 59);
+            this.SurnameTextBoxd.Name = "SurnameTextBoxd";
+            this.SurnameTextBoxd.Size = new System.Drawing.Size(321, 20);
+            this.SurnameTextBoxd.TabIndex = 3;
             // 
-            // textBox2
+            // NameTextBoxd
             // 
-            this.textBox2.Location = new System.Drawing.Point(15, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(321, 20);
-            this.textBox2.TabIndex = 4;
+            this.NameTextBoxd.Location = new System.Drawing.Point(15, 107);
+            this.NameTextBoxd.Name = "NameTextBoxd";
+            this.NameTextBoxd.Size = new System.Drawing.Size(321, 20);
+            this.NameTextBoxd.TabIndex = 4;
             // 
             // button1
             // 
@@ -108,8 +108,8 @@
             this.ClientSize = new System.Drawing.Size(349, 160);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.NameTextBoxd);
+            this.Controls.Add(this.SurnameTextBoxd);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -117,7 +117,7 @@
             this.Name = "SavingDialogForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Сохранение";
-            this.Load += new System.EventHandler(this.SavingDialogForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SavingDialogForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,8 +128,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox SurnameTextBoxd;
+        private System.Windows.Forms.TextBox NameTextBoxd;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

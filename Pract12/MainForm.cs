@@ -15,12 +15,12 @@ using System.Windows.Threading;
 
 namespace Pract12
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        string[] text;
-        bool textIsLoading = false;
+        public static string[] text;
+        public static bool textIsLoading = false;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace Pract12
         {
             if (textIsLoading)
             {
-                MessageBox.Show("Текст ещё загружается", "Подождите", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Текст ещё загружается", "Подождите", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             SavingDialogForm savingDialogForm = new SavingDialogForm();
@@ -45,7 +45,7 @@ namespace Pract12
         {
             if (textIsLoading)
             {
-                MessageBox.Show("Текст ещё загружается", "Подождите", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Текст ещё загружается", "Подождите", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -98,7 +98,7 @@ namespace Pract12
                     this.textBox1.Invoke(new Action(() =>
                     {
                         this.textBox1.ReadOnly = false;
-                        this.textIsLoading = false;
+                        textIsLoading = false;
                     }));
 
             });
