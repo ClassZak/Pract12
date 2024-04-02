@@ -12,6 +12,8 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Runtime.CompilerServices;
 using System.Windows.Threading;
+using MiniGame;
+using System.Xml.Linq;
 
 namespace Pract12
 {
@@ -107,6 +109,12 @@ namespace Pract12
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MiniGame.MainWindow mainWindow=new MainWindow();
+            mainWindow.Show();
         }
     }
 }

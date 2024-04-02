@@ -33,6 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -92,6 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\IconSave.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MiniGame\MiniGame.csproj">
+      <Project>{aaa76242-e77b-49a6-879d-cc58bbe1959e}</Project>
+      <Name>MiniGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
