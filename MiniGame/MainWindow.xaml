@@ -6,32 +6,45 @@
         xmlns:local="clr-namespace:MiniGame"
         mc:Ignorable="d"
         Background="Black"
-        Title="Понг" Height="450" Width="800">
+        ResizeMode="NoResize"
+        KeyDown="Window_KeyDown"
+        Keyboard.PreviewKeyDown="Window_KeyDown"
+        Title="Понг" Height="450px" Width="800px">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="10px"/>
+            <ColumnDefinition Width="30px"/>
+            <ColumnDefinition Width="700px"/>
+            <ColumnDefinition Width="30px"/>
+            <ColumnDefinition Width="10px"/>
         </Grid.ColumnDefinitions>
-
+    
 
         <Rectangle 
             x:Name="lefPad"
             Fill="White"
-            Grid.Column="1"
+            Grid.ColumnSpan="5"
             Stroke="Gray"
             StrokeThickness="2"
-            Height="150"
+            Height="150px"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="30"
+            
+            Margin="10,150,0,0"
             />
         <Rectangle 
             x:Name="rightPad"
             Fill="Wheat"
-            Grid.Column="3"
+            Grid.ColumnSpan="5"
             Stroke="Gray"
             StrokeThickness="2"
-            Height="150"
+            Height="150px"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Width="30"
+    
+            Margin="740px,150px,0,0"
             />
 
         <Ellipse
@@ -40,9 +53,12 @@
             Fill="White"
             Stroke="Gray"
             StrokeThickness="2"
-            Grid.Column="2"
-            Width="20"
-            Height="20"
+            Grid.ColumnSpan="5"
+            Width="20px"
+            Height="20px"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="0,0,0,0"
             />
 
     </Grid>

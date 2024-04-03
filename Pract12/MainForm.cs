@@ -62,7 +62,7 @@ namespace Pract12
         {
             if (textIsLoading)
             {
-                MessageBox.Show("Текст ещё загружается","Подождите",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Текст ещё загружается","Подождите",MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -81,9 +81,10 @@ namespace Pract12
 
                 if (this.textBox1.InvokeRequired)
                 {
+                    string s=string.Join("\n", text);
+                    Thread.Sleep(s.Length/1000); 
                     this.textBox1.Invoke(new Action(() =>
                     {
-                        string s=string.Join("\n", text);
                         this.textBox1.Text = s;
                     }));
                 }
@@ -102,7 +103,7 @@ namespace Pract12
                         this.textBox1.ReadOnly = false;
                         textIsLoading = false;
                     }));
-
+                MessageBox.Show("Текст загружен", "Загрузка", MessageBoxButtons.OK, MessageBoxIcon.Information);
             });
         }
 
