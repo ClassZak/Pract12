@@ -114,8 +114,11 @@ namespace Pract12
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MiniGame.MainWindow mainWindow=new MainWindow();
-            mainWindow.Show();
+            if(!MiniGame.MainWindow.notClosed)
+            {
+                MiniGame.MainWindow mainWindow=new MainWindow();
+                mainWindow.Show();
+            }
         }
     }
 }

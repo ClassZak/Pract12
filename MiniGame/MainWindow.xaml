@@ -7,18 +7,11 @@
         mc:Ignorable="d"
         Background="Black"
         ResizeMode="NoResize"
-        KeyDown="Window_KeyDown"
-        Keyboard.PreviewKeyDown="Window_KeyDown"
+        KeyUp="Window_KeyDown"
+        Closed="Window_Closed"
         Title="Понг" Height="450px" Width="800px">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10px"/>
-            <ColumnDefinition Width="30px"/>
-            <ColumnDefinition Width="700px"/>
-            <ColumnDefinition Width="30px"/>
-            <ColumnDefinition Width="10px"/>
-        </Grid.ColumnDefinitions>
-    
+
 
         <Rectangle 
             x:Name="lefPad"
@@ -39,7 +32,7 @@
             Grid.ColumnSpan="5"
             Stroke="Gray"
             StrokeThickness="2"
-            Height="150px"
+            Height="160px"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
             Width="30"
@@ -53,13 +46,18 @@
             Fill="White"
             Stroke="Gray"
             StrokeThickness="2"
-            Grid.ColumnSpan="5"
-            Width="20px"
-            Height="20px"
+            Width="20"
+            Height="20"
             VerticalAlignment="Top"
             HorizontalAlignment="Left"
-            Margin="0,0,0,0"
+            Margin="390,215,0,0"
+            Grid.ColumnSpan="5"
             />
+
+        <Line X1="0" Y1="30" X2="800" Y2="30" Stroke="White" StrokeThickness="2" Grid.ColumnSpan="7"/>
+        <Line X1="400" Y1="0" X2="400" Y2="450" Stroke="White" StrokeThickness="2" Grid.ColumnSpan="5"></Line>
+        <TextBlock x:Name="leftScoreTextBlock" Text="0" Foreground="White" FontSize="24" Grid.ColumnSpan="3" Grid.Column="2" Margin="0,0,-40,0"/>
+        <TextBlock FlowDirection="RightToLeft" x:Name="rightScoreTextBlock" Text="0" Foreground="White" FontSize="24" Margin="-740,0,0,0"/>
 
     </Grid>
 </Window>

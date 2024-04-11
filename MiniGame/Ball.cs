@@ -41,7 +41,7 @@ namespace MiniGame
         bool isMove=false;
         uint width,height;
 
-        double angle = 0;
+        public double angle = 0;
         #endregion
         public event EventHandler GotScore;
         public event EventHandler MoveEvent;
@@ -49,17 +49,89 @@ namespace MiniGame
         const uint SPEED = 7;
         static Random random = new Random();
         #region methods
+        private void CheckCornerCollision()
+        {
+            if(x<0 || x>windowRect.Width)
+            {
+                if(GotScore!=null)
+                    GotScore(this, new CoordinatesEventArgs(x,y));
+                x = windowRect.Width / 2;
+                y = windowRect.Height / 2;
+                angle=random.Next((int)4) * Math.PI / 2 + Math.PI / 6;
+            }
+            
+
+
+
+
+
+            /*if (x < 0 || x + this.width * 2 > windowRect.Right)
+            {
+                //x -= Math.Cos(angle) * SPEED;
+                if (angle < Math.PI)
+                    angle = Math.PI - angle;
+                else
+                    angle = Math.PI * 3 - angle;
+            }*/
+
+            
+
+            if (y < 30 || y + this.height * 3 > windowRect.Bottom)
+            {
+                angle = Math.PI * 2 - angle;
+                y += Math.Sin(angle) * SPEED;
+            }
+        }
         public void CheckCollision(Rect rect)
         {
-            if(x<windowRect.Width/2)
+            //higher
+            if ((y-Math.Sin(angle)*SPEED<rect.Top && y+height>=rect.Top)
+                &&
+                (x+width>rect.Left && x<rect.Left+rect.Width))
             {
-                
+                angle = Math.PI * 2 - angle;
+                this.x += Math.Cos(angle) * SPEED;
+                this.y += Math.Sin(angle) * SPEED;
             }
             else
+            //lower
+            if ((y - Math.Sin(angle) * SPEED > rect.Top+rect.Height && y <= rect.Top+rect.Height)
+                &&
+                (x + width > rect.Left && x < rect.Left + rect.Width))
             {
-
+                angle = Math.PI * 2 - angle;
+                this.x += Math.Cos(angle) * SPEED;
+                this.y += Math.Sin(angle) * SPEED;
             }
-            //MessageBox.Show($"Колизия\nleft:{rect.Left}\ntop:{rect.Top}\nright:{rect.Right}\nbottom:{rect.Bottom}");
+            else
+
+            //left
+            if((x-Math.Cos(angle)*SPEED<rect.Left && x+width>=rect.Left)
+                &&
+                (y+height>=rect.Top && y<=rect.Top+rect.Height))
+            {
+                if (angle < Math.PI)
+                    angle = Math.PI - angle;
+                else
+                    angle = Math.PI * 3 - angle;
+
+                this.x += Math.Cos(angle) * SPEED;
+                this.y += Math.Sin(angle) * SPEED;
+            }
+            else
+            //right
+            if ((y + height >= rect.Top && y <= rect.Top + rect.Height))
+            if((x - Math.Cos(angle) * SPEED >= rect.Left+rect.Width && x <= rect.Left+rect.Width))
+            {
+                if (angle < Math.PI)
+                    angle = Math.PI - angle;
+                else
+                    angle = Math.PI * 3 - angle;
+
+                this.x += Math.Cos(angle) * SPEED;
+                this.y += Math.Sin(angle) * SPEED;
+            }
+
         }
         protected void Step()
         {
@@ -68,6 +140,13 @@ namespace MiniGame
                 isMove = true;
                 Move();
             }
+        }
+        protected void CheckAngle()
+        {
+            while(angle<0)
+                angle += Math.PI*2;
+            while(angle>=Math.PI*2)
+                angle -= ((int)Math.Truncate(angle / Math.PI * 2)) * Math.PI * 2;
         }
 
 
@@ -85,52 +164,24 @@ namespace MiniGame
            
             await Task.Run(() =>
             {
-                while(isMove)
+                while(isMove && MainWindow.notClosed)
                 {
                     this.x += Math.Cos(angle)* SPEED;
                     this.y += Math.Sin(angle)* SPEED;
+                    CheckCornerCollision();
 
-
-
-                    if(x<0 || x+this.width*2>windowRect.Right)
-                    {
-                        x-=Math.Cos(angle) * SPEED;
-                        if (angle < Math.PI)
-                            angle = Math.PI - angle;
-                        else
-                            angle = Math.PI * 3 - angle;
-                    }
-
-
-
-                    if(y<0 || y+this.height*3 > windowRect.Bottom)
-                    {
-                        y-=Math.Sin(angle)*SPEED;
-                            angle = Math.PI*2 - angle;
-                    }
-
-
-
-
-                    if (angle>Math.PI*2)
-                        angle -= ((int)Math.Truncate(angle/Math.PI*2))*Math.PI*2;
-                    if(angle < 0)
-                        angle=Math.PI*2-angle;
 
                     //Correct "slow" angle
-                    if (angle <= 0.1 && angle >= -0.1)
-                        angle = random.Next((int)(Math.PI * 100) + 1) / 100.0;
-                    if (angle+Math.PI/2 <= 0.1 && angle + Math.PI / 2 >= -0.1)
-                        angle = random.Next((int)(Math.PI * 100) + 1) / 100.0;
+                    //CheckAngle();
+                    
 
                     //Move event
                     if (MoveEvent!=null)
                         MoveEvent(this,new CoordinatesEventArgs(this.x,this.y));
                     //Collision event
-                    if (x <= 40 || x + this.width*2+40 >= windowRect.Width)
-                        if (CheckCollisionEvent != null)
-                            CheckCollisionEvent(this, new CoordinatesEventArgs(this.x, this.y));
-                    Thread.Sleep(10);
+                    if (CheckCollisionEvent != null)
+                        CheckCollisionEvent(this, new CoordinatesEventArgs(this.x, this.y));
+                    Thread.Sleep(20);
                 }
             });
         }

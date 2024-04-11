@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MiniGameIco.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationBuildTasks" />
     <Reference Include="PresentationFramework.Aero" />
@@ -48,6 +51,7 @@
     <Reference Include="System.Activities.Core.Presentation" />
     <Reference Include="System.Activities.Presentation" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web.RegularExpressions" />
@@ -109,6 +113,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MiniGameIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\MiniGameIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MiniGameIco.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
